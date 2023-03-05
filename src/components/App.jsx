@@ -39,7 +39,7 @@ function App() {
     console.log(contacts);
     return contacts.filter(contact => {
       console.log('on filter change', filter, contact);
-      return contact.nameInput.toLowerCase().includes(filter.toLowerCase());
+      return contact.nameInput.toLowerCase().includes(filter?.toLowerCase());
     });
   };
 
