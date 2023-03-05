@@ -14,19 +14,17 @@ function App() {
     { id: 'id-4', nameInput: 'Annie Copeland', number: '227-91-26' },
   ];
 
-  const [contacts, setContacts] = useState(contactList);
+  const [contacts, setContacts] = useState(
+    JSON.parse(localStorage.getItem('contacts')) || contactList
+  );
   const [filter, setFilter] = useState('');
 
   useEffect(() => {
-    const savedContacts = JSON.parse(localStorage.getItem('contacts'));
-
-    if (savedContacts !== null) {
-      setContacts(savedContacts);
-    }
-  }, [setContacts]);
-
-  useEffect(() => {
     localStorage.setItem('contacts', JSON.stringify(contacts));
+
+    return () => {
+      console.log('unmounted!');
+    };
   }, [contacts]);
 
   const addContact = contact => {
