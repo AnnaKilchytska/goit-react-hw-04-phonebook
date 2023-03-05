@@ -21,10 +21,6 @@ function App() {
 
   useEffect(() => {
     localStorage.setItem('contacts', JSON.stringify(contacts));
-
-    return () => {
-      console.log('unmounted!');
-    };
   }, [contacts]);
 
   const addContact = contact => {
